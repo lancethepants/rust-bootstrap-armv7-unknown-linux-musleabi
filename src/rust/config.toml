@@ -1,0 +1,54 @@
+[llvm]
+optimize = true
+release-debuginfo = false
+ccache = "/usr/local/bin/ccache"
+ninja = true
+#static-libstdcpp = true
+
+#cflags = ""
+#cxxflags = ""
+#ldflags = ""
+
+[build]
+
+build-stage = 2
+test-stage = 2
+doc-stage = 2
+
+host = ["armv7-unknown-linux-musleabi"]
+target = ["armv7-unknown-linux-musleabi"]
+
+extended = true
+cargo-native-static = true
+
+#tools = ["cargo", "clippy", "rustfmt", "analysis", "src"] 
+
+[install]
+
+prefix = "/mmc"
+sysconfdir = "etc"
+
+[rust]
+
+optimize = true
+debug = false
+description = "tomatoware"
+rpath = false
+channel = "stable"
+
+[target.armv7-unknown-linux-musleabi]
+
+cc = "/opt/tomatoware/arm-musl-mmc/bin/arm-tomatoware-linux-musleabi-gcc"
+cxx = "/opt/tomatoware/arm-musl-mmc/bin/arm-tomatoware-linux-musleabi-g++"
+ar = "/opt/tomatoware/arm-musl-mmc/bin/arm-tomatoware-linux-musleabi-ar"
+ranlib = "/opt/tomatoware/arm-musl-mmc/bin/arm-tomatoware-linux-musleabi-ranlib"
+linker = "/opt/tomatoware/arm-musl-mmc/bin/arm-tomatoware-linux-musleabi-gcc"
+
+musl-root = "/opt/tomatoware/arm-musl-mmc/arm-tomatoware-linux-musleabi/sysroot"
+
+#crt-static = true
+
+[dist]
+
+src-tarball = false
+compression-formats = ["gz"]
